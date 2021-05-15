@@ -5,6 +5,10 @@ const questions = document.getElementById('questions');
 const option1 = document.getElementById('option1');
 const option2 = document.getElementById('option2');
 const option3 = document.getElementById('option3');
+const score = document.getElementById('score');
+const saveYourScore = document.getElementById('saveuser');
+const userName = document.getElementById('user');
+
 var numCorrect = 0;
 var numWrong = 0
 var myQuestions = [
@@ -95,6 +99,7 @@ option3.addEventListener("click",showResults)
         }
         else{
             console.log(numWrong,numCorrect)
+            showScore()
         }
     }
 // 
@@ -108,4 +113,8 @@ submitButton.onclick = function(){
   submitButton.style.display="none"
   showQuestions()
 }
-
+function showScore(){
+    quizContainer.style.display ="none";
+    resultsContainer.style.display="block";
+    score.textContent="Correct: "+ numCorrect+ "      Wrong:"+numWrong
+}
