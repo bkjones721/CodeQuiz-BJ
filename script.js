@@ -34,25 +34,26 @@ let cQuestion = 0;
 
 // function generateQuiz(questions, quizContainer, resultsContainer, submit){
 
-//     function showQuestions(questions, quizContainer){
-//         var output = [];
-//         var answers;
 
-//         for(var i=0; i<questions.length; i++){
 
-//             //answers
-//             answers =[];
 
-//             for (letter in questions [i].answers){
 
-//                 answers.push(
-//                     '<label>'
-//                     + '<input type="radio" name='question'+i+"value="
-//                     + letter + ':'
-//                     + questions[i].answers[letter]
-//                 );
-//             }
-//         }
+
+
+
+
+
+
+
+
+
+    function showQuestions(){
+      option1.innerText=myQuestions[cQuestion].answers.a
+      option2.innerText=myQuestions[cQuestion].answers.b
+      option3.innerText=myQuestions[cQuestion].answers.c
+      questions.innerText=myQuestions[cQuestion].question
+        
+    }
 
 //         outpust.push(
 //             '<div class="question">' + questions [i].question + '</div>'
@@ -101,4 +102,7 @@ let cQuestion = 0;
 //when user clicks submit, show results
 submitButton.onclick = function(){
   console.log("On click start button")
+  quizContainer.style.display ="block";
+  showQuestions()
 }
+
