@@ -5,6 +5,8 @@ const questions = document.getElementById('questions');
 const option1 = document.getElementById('option1');
 const option2 = document.getElementById('option2');
 const option3 = document.getElementById('option3');
+var numCorrect = 0;
+var numWrong = 0
 var myQuestions = [
                 { 
                     question: "What is 10/2?",
@@ -31,7 +33,9 @@ var myQuestions = [
 quizContainer.style.display ="none";
 resultsContainer.style.display="none";
 let cQuestion = 0;
-
+option1.addEventListener("click",showResults)
+option2.addEventListener("click",showResults)
+option3.addEventListener("click",showResults)
 // function generateQuiz(questions, quizContainer, resultsContainer, submit){
 
 
@@ -71,31 +75,29 @@ let cQuestion = 0;
         
 //         
 
-//     function showResults(questions, quizContainer, resultsContainer){
+    function showResults(){
 
-//         var answerContainers = quizContainer.querySelectorAll('.answers');
+        
 
-//         var userAnswer = '';
-//         var numCorrect = 0;
+        var userAnswer = this.getAttribute("data-value");
+        
 
-//         for(var i=0; i<questions.length; i++){
-
-//             userAnswer = (answerContainers[i].querySelector('input[name=question'+i+']:checked')||{}).value;
-
-//             if(userAnswer===answerContainers[i].correctAnswer){
-
-//                 numCorrect++;
-
-//                 answerContainers[i].style.color = 'lightgreen';
-//             }
-//             else{
-//                 answerContainers[i].style.color = 'red';
-//             }
-
-//         }
-//         resultsContainer.innerHTML = numCorrect + 'out of' + questions.length;
-//     }
-// }
+        console.log(userAnswer)
+        if(userAnswer==myQuestions[cQuestion].correctAnswer){
+            numCorrect++
+        }
+        else{
+            numWrong++
+        }
+        if(cQuestion<myQuestions.length-1){
+            cQuestion++
+            showQuestions()
+        }
+        else{
+            console.log(numWrong,numCorrect)
+        }
+    }
+// 
 // //show the questions
 //     showQuestions(questions, quizContainer);
 
@@ -103,6 +105,7 @@ let cQuestion = 0;
 submitButton.onclick = function(){
   console.log("On click start button")
   quizContainer.style.display ="block";
+  submitButton.style.display="none"
   showQuestions()
 }
 
